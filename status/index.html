@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinnamon Bot - Status</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #09090b;
+            color: #f4f4f5;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Fade-in & Scroll Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade {
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 48px;
+            background-color: #0d0d0f;
+            border-bottom: 1px solid #1f1f23;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            background: #121216;
+            padding: 6px 20px;
+            border: 1px solid #222228;
+            border-radius: 0px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #a1a1aa;
+            font-weight: 500;
+            font-size: 13px;
+            letter-spacing: 0.3px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a.active, .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .dashboard-btn {
+            background-color: #121216;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 0px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #2a2a32;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dashboard-btn:hover {
+            background-color: #1a1a20;
+            border-color: #3f3f46;
+            transform: translateY(-1px);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1240px;
+            margin: 50px auto;
+            padding: 0 24px;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            border-bottom: 1px solid #1f1f23;
+            padding-bottom: 16px;
+        }
+
+        .page-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e4e4e7;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .page-title i {
+            color: #71717a;
+        }
+
+        /* Status Grid Layout matching user's shard UI reference */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+            gap: 16px;
+        }
+
+        .status-card {
+            background: #101014;
+            border: 1px solid #1f1f23;
+            border-radius: 0px;
+            padding: 24px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .status-card:hover {
+            border-color: #3f3f46;
+            background: #141419;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .status-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #1a1a1f;
+        }
+
+        .shard-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.2px;
+        }
+
+        .shard-update-time {
+            font-size: 12px;
+            color: #71717a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .operational-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #0d1f16;
+            border: 1px solid #143823;
+            color: #22c55e;
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 0px;
+        }
+
+        .operational-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .metric-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .metric-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #71717a;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .metric-value {
+            font-size: 14px;
+            font-weight: 500;
+            color: #d4d4d8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .metric-value i {
+            color: #71717a;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="animate-fade">
+        <ul class="nav-links">
+            <li><a href="index.html">Commands</a></li>
+            <li><a href="status.html" class="active">Status</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+        <a href="https://discord.gg/cinnamon" class="dashboard-btn" target="_blank">
+            <i class="fab fa-discord"></i> Dashboard
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container animate-fade" style="animation-delay: 0.1s;">
+
+        <div class="header-row">
+            <div class="page-title">
+                <i class="fa-solid fa-wifi"></i> System Status & Shards
+            </div>
+        </div>
+
+        <!-- Status Grid -->
+        <div class="status-grid">
+
+            <!-- Shard 1 Card -->
+            <div class="status-card">
+                <div class="status-card-header">
+                    <div>
+                        <div class="shard-title">Shard 1</div>
+                        <div class="shard-update-time">
+                            <i class="fa-solid fa-rotate-right"></i> just now
+                        </div>
+                    </div>
+                    <div class="operational-badge">Operational</div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-label">Latency</div>
+                        <div class="metric-value">
+                            <i class="fa-solid fa-wave-square"></i> 18ms
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
