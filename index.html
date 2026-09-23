@@ -75,7 +75,13 @@
             color: #ffffff;
         }
 
-        .dashboard-btn {
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .dashboard-btn, .add-bot-btn {
             background-color: #121216;
             color: #ffffff;
             padding: 10px 20px;
@@ -90,10 +96,20 @@
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .dashboard-btn:hover {
+        .dashboard-btn:hover, .add-bot-btn:hover {
             background-color: #1a1a20;
             border-color: #3f3f46;
             transform: translateY(-1px);
+        }
+
+        .add-bot-btn {
+            background-color: #5865F2;
+            border-color: #5865F2;
+        }
+
+        .add-bot-btn:hover {
+            background-color: #4752C4;
+            border-color: #4752C4;
         }
 
         /* Main Container */
@@ -548,9 +564,14 @@
             <li><a onclick="switchTab('faq', event)" id="nav-faq">FAQ</a></li>
             <li><a onclick="switchTab('rules', event)" id="nav-rules">Rules & TOS</a></li>
         </ul>
-        <a href="https://discord.gg/cinnamon" class="dashboard-btn" target="_blank">
-            <i class="fab fa-discord"></i> Dashboard
-        </a>
+        <div class="nav-right">
+            <a href="http://cinnamon.help/add-bot" class="add-bot-btn" target="_blank">
+                <i class="fa-solid fa-plus"></i> Add Bot
+            </a>
+            <a href="https://discord.gg/cinnamon" class="dashboard-btn" target="_blank">
+                <i class="fab fa-discord"></i> Dashboard
+            </a>
+        </div>
     </nav>
 
     <!-- TAB 1: COMMANDS -->
@@ -1189,7 +1210,7 @@
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        Yes! Cinnamon is completely free and available for public use[cite: 1, 2, 3] across Discord servers.
+                        Yes! Cinnamon is completely free and available for public use[cite: 1] across Discord servers.
                     </div>
                 </div>
 
@@ -1215,7 +1236,7 @@
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        Cinnamon is completely free to use[cite: 1, 2, 3]! There are no hidden fees or paid paywalls.
+                        Cinnamon is completely free to use[cite: 1]! There are no hidden fees or paid paywalls.
                     </div>
                 </div>
 
@@ -1226,7 +1247,7 @@
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        Yes, you can add cinnamon to as many servers as you like for free[cite: 1, 2, 3].
+                        Yes, you can add cinnamon to as many servers as you like for free[cite: 1].
                     </div>
                 </div>
             </div>
@@ -1264,7 +1285,7 @@
 
                 <div class="rule-card">
                     <h3><i class="fa-solid fa-user-check"></i> Acceptable Use Policy</h3>
-                    <p>Cinnamon is provided as a free utility tool[cite: 1, 2, 3]. Misuse of moderation tools (such as mass unwarranted bans, targeted harassment via logs, or channel purging sabotage) is strictly prohibited. Server administrators are fully responsible for how their staff teams utilize Cinnamon's permissions.</p>
+                    <p>Cinnamon is provided as a free utility tool[cite: 1]. Misuse of moderation tools (such as mass unwarranted bans, targeted harassment via logs, or channel purging sabotage) is strictly prohibited. Server administrators are fully responsible for how their staff teams utilize Cinnamon's permissions.</p>
                 </div>
             </div>
         </div>
