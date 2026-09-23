@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinnamon Bot - FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #09090b;
+            color: #f4f4f5;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade {
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 48px;
+            background-color: #0d0d0f;
+            border-bottom: 1px solid #1f1f23;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            background: #121216;
+            padding: 6px 20px;
+            border: 1px solid #222228;
+            border-radius: 0px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #a1a1aa;
+            font-weight: 500;
+            font-size: 13px;
+            letter-spacing: 0.3px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a.active, .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .dashboard-btn {
+            background-color: #121216;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 0px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #2a2a32;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dashboard-btn:hover {
+            background-color: #1a1a20;
+            border-color: #3f3f46;
+            transform: translateY(-1px);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 24px;
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+            border-bottom: 1px solid #1f1f23;
+            padding-bottom: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #e4e4e7;
+        }
+
+        .page-header i {
+            color: #71717a;
+        }
+
+        /* FAQ Accordion List */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: #101014;
+            border: 1px solid #1f1f23;
+            border-radius: 0px;
+            overflow: hidden;
+            transition: border-color 0.25s ease;
+        }
+
+        .faq-item:hover {
+            border-color: #3f3f46;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .faq-question i {
+            color: #71717a;
+            font-size: 14px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+            color: #ffffff;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+            background: #0d0d10;
+            border-top: 1px solid transparent;
+            color: #94949b;
+            font-size: 14px;
+            line-height: 1.5;
+            padding: 0 24px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 20px 24px;
+            border-top-color: #1f1f23;
+        }
+
+        .crypto-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .crypto-badge {
+            background: #16161c;
+            border: 1px solid #222228;
+            color: #d4d4d8;
+            padding: 3px 8px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="animate-fade">
+        <ul class="nav-links">
+            <li><a href="index.html">Commands</a></li>
+            <li><a href="#">Status</a></li>
+            <li><a href="faq.html" class="active">FAQ</a></li>
+        </ul>
+        <a href="https://discord.gg/cinnamon" class="dashboard-btn" target="_blank">
+            <i class="fab fa-discord"></i> Dashboard
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container animate-fade" style="animation-delay: 0.1s;">
+
+        <div class="page-header">
+            <i class="fa-solid fa-list-ul"></i> Frequently Asked Questions
+        </div>
+
+        <div class="faq-list">
+
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Is bleed available for free and public use?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    No, bleed is a premium discord bot. You must purchase a one-time subscription in order to be whitelisted.
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How can I pay for bleed?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    You can pay using major cryptocurrency coins, Venmo, or approved gift cards. 
+                    <div class="crypto-list">
+                        <span class="crypto-badge">Bitcoin (BTC)</span>
+                        <span class="crypto-badge">Ethereum (ETH)</span>
+                        <span class="crypto-badge">Litecoin (LTC)</span>
+                        <span class="crypto-badge">Solana (SOL)</span>
+                        <span class="crypto-badge">USDT</span>
+                        <span class="crypto-badge">Venmo</span>
+                        <span class="crypto-badge">Gift Cards</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How much does bleed cost?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    It is a 1-time purchase only priced at <strong>$15</strong>. No hidden recurring fees or monthly subscriptions required.
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Can I transfer bleed to another server?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    Yes, you can transfer bleed to another server once.
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    What if I want the bot to leave a server, but transfer later?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    If you kick the bot or remove it from your active whitelisted server, your single transfer allocation can be utilized to move the whitelist to a new server destination.
+                </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    If I've already transferred the bot once, can I transfer it again?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    No, transfers are limited to a one-time policy per purchase license to prevent license abuse.
+                </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFxl(this)">
+                    I didn't buy the bot but I have it in my server, can I transfer it?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    Only verified license holders who have completed the $15 purchase can control and transfer bot whitelisting.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isActive = item.classList.contains('active');
+
+            // Close all items
+            const allItems = document.getElementsByClassName('faq-item');
+            for (let i = 0; i < allItems.length; i++) {
+                allItems[i].classList.remove('active');
+            }
+
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
