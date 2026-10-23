@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Winter - Help</title>
+    <title>Winter - Help & Documentation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -15,13 +15,30 @@
         }
 
         body {
-            background-color: #09090b;
+            background-color: #000000;
             color: #f4f4f5;
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Fade-in & Scroll Animations */
+        /* Falling Snow Canvas Background */
+        #snowCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Page Content Wrapper */
+        .page-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -43,21 +60,21 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 48px;
-            background-color: #0d0d0f;
-            border-bottom: 1px solid #1f1f23;
+            background-color: rgba(10, 10, 10, 0.85);
+            border-bottom: 1px solid #1a1a1a;
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
         }
 
         .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 20px;
             list-style: none;
-            background: #121216;
-            padding: 6px 20px;
-            border: 1px solid #222228;
+            background: #080808;
+            padding: 6px 18px;
+            border: 1px solid #1f1f1f;
             border-radius: 0px;
         }
 
@@ -82,7 +99,7 @@
         }
 
         .dashboard-btn, .add-bot-btn {
-            background-color: #121216;
+            background-color: #0d0d0d;
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 0px;
@@ -92,12 +109,12 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            border: 1px solid #2a2a32;
+            border: 1px solid #222222;
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .dashboard-btn:hover, .add-bot-btn:hover {
-            background-color: #1a1a20;
+            background-color: #171717;
             border-color: #3f3f46;
             transform: translateY(-1px);
         }
@@ -115,7 +132,7 @@
         /* Main Container */
         .container {
             max-width: 1240px;
-            margin: 50px auto;
+            margin: 40px auto;
             padding: 0 24px;
         }
 
@@ -124,7 +141,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 24px;
-            border-bottom: 1px solid #1f1f23;
+            border-bottom: 1px solid #181818;
             padding-bottom: 16px;
         }
 
@@ -148,8 +165,8 @@
 
         .search-box input {
             width: 100%;
-            background: #121216;
-            border: 1px solid #222228;
+            background: #080808;
+            border: 1px solid #1f1f1f;
             padding: 10px 14px 10px 38px;
             border-radius: 0px;
             color: #ffffff;
@@ -159,8 +176,8 @@
         }
 
         .search-box input:focus {
-            border-color: #52525b;
-            background: #16161c;
+            border-color: #3f3f46;
+            background: #0d0d0d;
         }
 
         .search-box i {
@@ -182,8 +199,8 @@
         }
 
         .cat-btn {
-            background: #121216;
-            border: 1px solid #222228;
+            background: #080808;
+            border: 1px solid #1f1f1f;
             color: #a1a1aa;
             padding: 8px 16px;
             border-radius: 0px;
@@ -198,7 +215,7 @@
         }
 
         .cat-btn span {
-            background: #1b1b22;
+            background: #141414;
             padding: 2px 6px;
             border-radius: 0px;
             font-size: 11px;
@@ -206,7 +223,7 @@
         }
 
         .cat-btn.active, .cat-btn:hover {
-            background: #1b1b22;
+            background: #141414;
             color: #ffffff;
             border-color: #3f3f46;
         }
@@ -219,19 +236,19 @@
         }
 
         .command-card {
-            background: #101014;
-            border: 1px solid #1f1f23;
+            background: #080808;
+            border: 1px solid #181818;
             border-radius: 0px;
-            padding: 24px;
+            padding: 22px;
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
         }
 
         .command-card:hover {
             border-color: #3f3f46;
-            background: #141419;
+            background: #0d0d0d;
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
         }
 
         .command-header {
@@ -242,7 +259,7 @@
         }
 
         .command-name {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             color: #ffffff;
             letter-spacing: -0.2px;
@@ -258,13 +275,13 @@
 
         .copy-icon:hover {
             color: #ffffff;
-            background: #1c1c24;
+            background: #181818;
         }
 
         .command-desc {
             font-size: 13px;
             color: #94949b;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             line-height: 1.4;
         }
 
@@ -285,25 +302,26 @@
         }
 
         .badge.permission {
-            background: #141419;
+            background: #111111;
             color: #d4d4d8;
             border-radius: 0px;
             font-family: 'Inter', sans-serif;
             font-size: 11px;
             font-weight: 500;
-            border: 1px solid #222228;
+            border: 1px solid #222222;
             padding: 4px 10px;
         }
 
         .usage-box {
-            background: #070709;
-            border: 1px solid #1f1f23;
-            padding: 9px 12px;
+            background: #030303;
+            border: 1px solid #1a1a1a;
+            padding: 8px 12px;
             border-radius: 0px;
             font-family: monospace;
             font-size: 12px;
             color: #a1a1aa;
             margin-bottom: 14px;
+            word-break: break-all;
         }
 
         /* Status Grid Layout */
@@ -314,19 +332,16 @@
         }
 
         .status-card {
-            background: #101014;
-            border: 1px solid #1f1f23;
+            background: #080808;
+            border: 1px solid #181818;
             border-radius: 0px;
             padding: 24px;
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
         }
 
         .status-card:hover {
             border-color: #3f3f46;
-            background: #141419;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            background: #0d0d0d;
         }
 
         .status-card-header {
@@ -335,14 +350,13 @@
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 16px;
-            border-bottom: 1px solid #1a1a1f;
+            border-bottom: 1px solid #181818;
         }
 
         .shard-title {
             font-size: 16px;
             font-weight: 600;
             color: #ffffff;
-            letter-spacing: -0.2px;
         }
 
         .shard-update-time {
@@ -358,13 +372,12 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            background: #0d1f16;
-            border: 1px solid #143823;
+            background: #091a10;
+            border: 1px solid #123d24;
             color: #22c55e;
             padding: 4px 10px;
             font-size: 12px;
             font-weight: 500;
-            border-radius: 0px;
         }
 
         .operational-badge::before {
@@ -374,40 +387,6 @@
             background-color: #22c55e;
             border-radius: 50%;
             box-shadow: 0 0 8px #22c55e;
-        }
-
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-
-        .metric-item {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .metric-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: #71717a;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-
-        .metric-value {
-            font-size: 14px;
-            font-weight: 500;
-            color: #d4d4d8;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .metric-value i {
-            color: #71717a;
-            font-size: 13px;
         }
 
         /* FAQ Accordion List */
@@ -420,9 +399,8 @@
         }
 
         .faq-item {
-            background: #101014;
-            border: 1px solid #1f1f23;
-            border-radius: 0px;
+            background: #080808;
+            border: 1px solid #181818;
             overflow: hidden;
             transition: border-color 0.25s ease;
         }
@@ -461,38 +439,21 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
-            background: #0d0d10;
-            border-top: 1px solid transparent;
+            background: #050505;
             color: #94949b;
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.6;
             padding: 0 24px;
         }
 
         .faq-item.active .faq-answer {
             max-height: 300px;
             padding: 20px 24px;
-            border-top-color: #1f1f23;
+            border-top: 1px solid #181818;
         }
 
-        .crypto-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 8px;
-        }
-
-        .crypto-badge {
-            background: #16161c;
-            border: 1px solid #222228;
-            color: #d4d4d8;
-            padding: 3px 8px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        /* Rules / TOS Tab Styling */
-        .rules-container {
+        /* Privacy & Info Styling */
+        .privacy-container {
             max-width: 900px;
             margin: 0 auto;
             display: flex;
@@ -500,49 +461,39 @@
             gap: 20px;
         }
 
-        .rule-card {
-            background: #101014;
-            border: 1px solid #1f1f23;
-            padding: 24px;
+        .privacy-card {
+            background: #080808;
+            border: 1px solid #181818;
+            padding: 28px;
             border-radius: 0px;
         }
 
-        .rule-card h3 {
-            font-size: 16px;
+        .privacy-card h3 {
+            font-size: 17px;
             color: #ffffff;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .rule-card p, .rule-card ul {
+        .privacy-card h3 i {
+            color: #71717a;
+        }
+
+        .privacy-card p, .privacy-card ul {
             font-size: 14px;
             color: #94949b;
             line-height: 1.6;
         }
 
-        .rule-card ul {
+        .privacy-card ul {
             padding-left: 20px;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
-        .warning-box {
-            background: #1f1315;
-            border: 1px solid #3f1a20;
-            color: #fca5a5;
-            padding: 16px 20px;
-            font-size: 14px;
-            line-height: 1.5;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        .warning-box i {
-            font-size: 18px;
-            color: #ef4444;
-            margin-top: 2px;
+        .privacy-card ul li {
+            margin-bottom: 8px;
         }
 
         .tab-content {
@@ -556,959 +507,932 @@
 </head>
 <body>
 
-    <!-- Navigation Bar -->
-    <nav class="animate-fade">
-        <ul class="nav-links">
-            <li><a onclick="switchTab('commands', event)" id="nav-commands" class="active">Commands</a></li>
-            <li><a onclick="switchTab('status', event)" id="nav-status">Status</a></li>
-            <li><a onclick="switchTab('faq', event)" id="nav-faq">FAQ</a></li>
-            <li><a onclick="switchTab('rules', event)" id="nav-rules">Rules & TOS</a></li>
-        </ul>
-        <div class="nav-right">
-            <a href="https://discord.com/oauth2/authorize?client_id=1562817249725780009&permissions=8&integration_type=0&scope=bot" class="add-bot-btn" target="_blank">
-                <i class="fa-solid fa-plus"></i> Add Bot
-            </a>
-            <a href="https://discord.gg/7S3FCEdvAr" class="dashboard-btn" target="_blank">
-                <i class="fab fa-discord"></i> Dashboard
-            </a>
-        </div>
-    </nav>
+    <!-- Falling Snow Particles Canvas -->
+    <canvas id="snowCanvas"></canvas>
 
-    <!-- TAB 1: COMMANDS -->
-    <div id="tab-commands" class="tab-content active-tab">
-        <div class="container animate-fade" style="animation-delay: 0.1s;">
-            <div class="header-search-row">
-                <div class="page-title">
-                    <i class="fa-solid fa-terminal"></i> Command Directory
-                </div>
-                <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="searchBar" placeholder="Search commands..." onkeyup="filterCommands()">
-                </div>
+    <div class="page-wrapper">
+        <!-- Navigation Bar -->
+        <nav class="animate-fade">
+            <ul class="nav-links">
+                <li><a onclick="switchTab('commands', event)" id="nav-commands" class="active">Commands</a></li>
+                <li><a onclick="switchTab('status', event)" id="nav-status">Status</a></li>
+                <li><a onclick="switchTab('faq', event)" id="nav-faq">FAQ</a></li>
+                <li><a onclick="switchTab('rules', event)" id="nav-rules">Rules & TOS</a></li>
+                <li><a onclick="switchTab('privacy', event)" id="nav-privacy">Your Info and Privacy</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="https://discord.com/oauth2/authorize?client_id=1562817249725780009&permissions=8&integration_type=0&scope=bot" class="add-bot-btn" target="_blank">
+                    <i class="fa-solid fa-plus"></i> Add Bot
+                </a>
+                <a href="https://discord.gg/cinnamon" class="dashboard-btn" target="_blank">
+                    <i class="fab fa-discord"></i> Support Server
+                </a>
             </div>
+        </nav>
 
-            <!-- Category Filter Tabs -->
-            <div class="categories">
-                <button class="cat-btn active" onclick="filterCategory('all')"><i class="fa-solid fa-layer-group"></i> All <span>52</span></button>
-                <button class="cat-btn" onclick="filterCategory('information')"><i class="fa-solid fa-circle-info"></i> Information <span>15</span></button>
-                <button class="cat-btn" onclick="filterCategory('moderation')"><i class="fa-solid fa-hammer"></i> Moderation <span>23</span></button>
-                <button class="cat-btn" onclick="filterCategory('voicemaster')"><i class="fa-solid fa-microphone"></i> VoiceMaster <span>10</span></button>
-                <button class="cat-btn" onclick="filterCategory('security')"><i class="fa-solid fa-shield-halved"></i> Security <span>12</span></button>
-                <button class="cat-btn" onclick="filterCategory('giveaways')"><i class="fa-solid fa-gift"></i> Giveaways <span>3</span></button>
-            </div>
-
-            <!-- Cards Grid -->
-            <div class="commands-grid" id="grid">
-                <!-- Help -->
-                <div class="command-card" data-category="information" data-name="help">
-                    <div class="command-header">
-                        <div class="command-name">help</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',help')"></i>
+        <!-- TAB 1: COMMANDS -->
+        <div id="tab-commands" class="tab-content active-tab">
+            <div class="container animate-fade" style="animation-delay: 0.1s;">
+                <div class="header-search-row">
+                    <div class="page-title">
+                        <i class="fa-solid fa-terminal"></i> Command Directory
                     </div>
-                    <div class="command-desc">Display bot website and support server invite link.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,help</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">None</span></div>
-                </div>
-
-                <!-- Customize -->
-                <div class="command-card" data-category="information" data-name="customize avatar">
-                    <div class="command-header">
-                        <div class="command-name">customize avatar</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',customize avatar')"></i>
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="searchBar" placeholder="Search commands..." onkeyup="filterCommands()">
                     </div>
-                    <div class="command-desc">Customize the bot's avatar for this server.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,customize avatar [image URL]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Server Owner</span></div>
                 </div>
 
-                <!-- Serverinfo -->
-                <div class="command-card" data-category="information" data-name="serverinfo">
-                    <div class="command-header">
-                        <div class="command-name">serverinfo</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',serverinfo')"></i>
-                    </div>
-                    <div class="command-desc">Display detailed statistics and details about the current server.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,serverinfo</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">None</span></div>
+                <!-- Category Filter Tabs -->
+                <div class="categories">
+                    <button class="cat-btn active" onclick="filterCategory('all')"><i class="fa-solid fa-layer-group"></i> All <span>51</span></button>
+                    <button class="cat-btn" onclick="filterCategory('information')"><i class="fa-solid fa-circle-info"></i> Information <span>11</span></button>
+                    <button class="cat-btn" onclick="filterCategory('moderation')"><i class="fa-solid fa-hammer"></i> Moderation <span>21</span></button>
+                    <button class="cat-btn" onclick="filterCategory('voicemaster')"><i class="fa-solid fa-microphone"></i> VoiceMaster <span>11</span></button>
+                    <button class="cat-btn" onclick="filterCategory('security')"><i class="fa-solid fa-shield-halved"></i> Security & Admin <span>5</span></button>
+                    <button class="cat-btn" onclick="filterCategory('giveaways')"><i class="fa-solid fa-gift"></i> Giveaways <span>3</span></button>
                 </div>
 
-                <!-- Whois -->
-                <div class="command-card" data-category="information" data-name="whois">
-                    <div class="command-header">
-                        <div class="command-name">whois</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',whois')"></i>
-                    </div>
-                    <div class="command-desc">Show detailed information about a member or user ID.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,whois [user]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">None</span></div>
-                </div>
+                <!-- Commands Grid (Matches vanity_2.py precisely) -->
+                <div class="commands-grid" id="grid">
 
-                <!-- Roles -->
-                <div class="command-card" data-category="information" data-name="roles">
-                    <div class="command-header">
-                        <div class="command-name">roles</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',roles')"></i>
-                    </div>
-                    <div class="command-desc">View an interactive paginated list of all server roles.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,roles</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">None</span></div>
-                </div>
-
-                <!-- Name History -->
-                <div class="command-card" data-category="information" data-name="nh">
-                    <div class="command-header">
-                        <div class="command-name">nh</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',nh')"></i>
-                    </div>
-                    <div class="command-desc">Check previous usernames and nicknames of a member.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,nh [member]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">None</span></div>
-                </div>
-
-                <!-- Clear Names -->
-                <div class="command-card" data-category="information" data-name="clearnames">
-                    <div class="command-header">
-                        <div class="command-name">clearnames</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',clearnames')"></i>
-                    </div>
-                    <div class="command-desc">Reset your recorded nickname and username history.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,clearnames</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">None</span></div>
-                </div>
-
-                <!-- Timezone -->
-                <div class="command-card" data-category="information" data-name="timezone">
-                    <div class="command-header">
-                        <div class="command-name">timezone</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',timezone')"></i>
-                    </div>
-                    <div class="command-desc">View or configure your current timezone setting.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,timezone set [location]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">None</span></div>
-                </div>
-
-                <!-- Crypto -->
-                <div class="command-card" data-category="information" data-name="crypto">
-                    <div class="command-header">
-                        <div class="command-name">crypto</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',crypto')"></i>
-                    </div>
-                    <div class="command-desc">Checks the current market price of the specified cryptocurrency.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,crypto [coin]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">None</span></div>
-                </div>
-
-                <!-- Urban -->
-                <div class="command-card" data-category="information" data-name="urban">
-                    <div class="command-header">
-                        <div class="command-name">urban</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',urban')"></i>
-                    </div>
-                    <div class="command-desc">Search definitions on Urban Dictionary with interactive pages.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,urban [term]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">None</span></div>
-                </div>
-
-                <!-- Roblox -->
-                <div class="command-card" data-category="information" data-name="roblox">
-                    <div class="command-header">
-                        <div class="command-name">roblox</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',roblox')"></i>
-                    </div>
-                    <div class="command-desc">Gets profile information on the given Roblox user.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,roblox [username]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">None</span></div>
-                </div>
-
-                <!-- Ban -->
-                <div class="command-card" data-category="moderation" data-name="ban">
-                    <div class="command-header">
-                        <div class="command-name">ban</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',ban')"></i>
-                    </div>
-                    <div class="command-desc">Bans the specified user from the server with optional history deletion.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,ban [user] [delete_history] [reason]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Ban Members</span></div>
-                </div>
-
-                <!-- Hardban -->
-                <div class="command-card" data-category="moderation" data-name="hb">
-                    <div class="command-header">
-                        <div class="command-name">hb</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',hb')"></i>
-                    </div>
-                    <div class="command-desc">Hardbans a user and wipes 7 days of message history.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,hb [user] [reason]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Ban Members</span></div>
-                </div>
-
-                <!-- Unban -->
-                <div class="command-card" data-category="moderation" data-name="unban">
-                    <div class="command-header">
-                        <div class="command-name">unban</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',unban')"></i>
-                    </div>
-                    <div class="command-desc">Unbans a user from the server using their ID.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,unban [user_id]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Ban Members</span></div>
-                </div>
-
-                <!-- Kick -->
-                <div class="command-card" data-category="moderation" data-name="kick">
-                    <div class="command-header">
-                        <div class="command-name">kick</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',kick')"></i>
-                    </div>
-                    <div class="command-desc">Kicks a member from the server.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,kick [user] [reason]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Kick Members</span></div>
-                </div>
-
-                <!-- Warn -->
-                <div class="command-card" data-category="moderation" data-name="warn">
-                    <div class="command-header">
-                        <div class="command-name">warn</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',warn')"></i>
-                    </div>
-                    <div class="command-desc">Warns the mentioned user and private messages them the reason.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,warn [member] [reason]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Kick Members</span></div>
-                </div>
-
-                <!-- Timeout -->
-                <div class="command-card" data-category="moderation" data-name="timeout">
-                    <div class="command-header">
-                        <div class="command-name">timeout</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',timeout')"></i>
-                    </div>
-                    <div class="command-desc">Timeout (mute) a member for a specified duration.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,timeout [user] [duration] [reason]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Moderate Members</span></div>
-                </div>
-
-                <!-- Untimeout -->
-                <div class="command-card" data-category="moderation" data-name="untimeout">
-                    <div class="command-header">
-                        <div class="command-name">untimeout</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',untimeout')"></i>
-                    </div>
-                    <div class="command-desc">Remove timeout restriction from a member.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,untimeout [user]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Moderate Members</span></div>
-                </div>
-
-                <!-- Lock -->
-                <div class="command-card" data-category="moderation" data-name="lock">
-                    <div class="command-header">
-                        <div class="command-name">lock</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',lock')"></i>
-                    </div>
-                    <div class="command-desc">Locks down the current channel or specified text channel.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,lock [channel]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Channels</span></div>
-                </div>
-
-                <!-- Unlock -->
-                <div class="command-card" data-category="moderation" data-name="unlock">
-                    <div class="command-header">
-                        <div class="command-name">unlock</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',unlock')"></i>
-                    </div>
-                    <div class="command-desc">Unlocks the current channel or specified text channel.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,unlock [channel]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Channels</span></div>
-                </div>
-
-                <!-- Hide -->
-                <div class="command-card" data-category="moderation" data-name="hide">
-                    <div class="command-header">
-                        <div class="command-name">hide</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',hide')"></i>
-                    </div>
-                    <div class="command-desc">Hides the channel from default role viewing permissions.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,hide [channel]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Channels</span></div>
-                </div>
-
-                <!-- Unhide -->
-                <div class="command-card" data-category="moderation" data-name="unhide">
-                    <div class="command-header">
-                        <div class="command-name">unhide</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',unhide')"></i>
-                    </div>
-                    <div class="command-desc">Restores neutral visibility permissions for a channel.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,unhide [channel]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Channels</span></div>
-                </div>
-
-                <!-- Role -->
-                <div class="command-card" data-category="moderation" data-name="role">
-                    <div class="command-header">
-                        <div class="command-name">role</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',role')"></i>
-                    </div>
-                    <div class="command-desc">Assign or remove roles from a server member.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,role [user] [role]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Roles</span></div>
-                </div>
-
-                <!-- Role Restore -->
-                <div class="command-card" data-category="moderation" data-name="role restore">
-                    <div class="command-header">
-                        <div class="command-name">role restore</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',role restore')"></i>
-                    </div>
-                    <div class="command-desc">Restores backup roles to a rejoined member within the 1-hour grace window.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,role restore [member]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Roles</span></div>
-                </div>
-
-                <!-- Purge -->
-                <div class="command-card" data-category="moderation" data-name="purge">
-                    <div class="command-header">
-                        <div class="command-name">purge</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',purge')"></i>
-                    </div>
-                    <div class="command-desc">Bulk delete a specified number of messages from a channel.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,purge [user] [amount]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Messages</span></div>
-                </div>
-
-                <!-- Rename -->
-                <div class="command-card" data-category="moderation" data-name="rename">
-                    <div class="command-header">
-                        <div class="command-name">rename</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',rename')"></i>
-                    </div>
-                    <div class="command-desc">Change a member's server display nickname.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,rename [user] [new_nick]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Nicknames</span></div>
-                </div>
-
-                <!-- Force Nickname -->
-                <div class="command-card" data-category="moderation" data-name="forcenickname">
-                    <div class="command-header">
-                        <div class="command-name">forcenickname</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',forcenickname')"></i>
-                    </div>
-                    <div class="command-desc">Force a member's current nickname.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,forcenickname [user] [name]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Nicknames</span></div>
-                </div>
-
-                <!-- Say -->
-                <div class="command-card" data-category="moderation" data-name="say">
-                    <div class="command-header">
-                        <div class="command-name">say</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',say')"></i>
-                    </div>
-                    <div class="command-desc">Make the bot echo a specified custom message.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,say [message]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Messages</span></div>
-                </div>
-
-                <!-- Nuke -->
-                <div class="command-card" data-category="moderation" data-name="nuke">
-                    <div class="command-header">
-                        <div class="command-name">nuke</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',nuke')"></i>
-                    </div>
-                    <div class="command-desc">Clone and recreate the current text channel with button approval.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,nuke</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Channels</span></div>
-                </div>
-
-                <!-- Snipe -->
-                <div class="command-card" data-category="moderation" data-name="snipe">
-                    <div class="command-header">
-                        <div class="command-name">snipe</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',snipe')"></i>
-                    </div>
-                    <div class="command-desc">Retrieve recently deleted messages in the channel.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,snipe</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Messages</span></div>
-                </div>
-
-                <!-- Reaction Snipe -->
-                <div class="command-card" data-category="moderation" data-name="reactionsnipe">
-                    <div class="command-header">
-                        <div class="command-name">reactionsnipe</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',reactionsnipe')"></i>
-                    </div>
-                    <div class="command-desc">Retrieve recently removed reactions in the channel.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,reactionsnipe</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Messages</span></div>
-                </div>
-
-                <!-- Clear Snipes -->
-                <div class="command-card" data-category="moderation" data-name="clearasnipes">
-                    <div class="command-header">
-                        <div class="command-name">clearasnipes</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',clearasnipes')"></i>
-                    </div>
-                    <div class="command-desc">Clear deleted message logs and reaction logs for the channel.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,clearasnipes</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Messages</span></div>
-                </div>
-
-                <!-- Stickyrole -->
-                <div class="command-card" data-category="moderation" data-name="stickyrole">
-                    <div class="command-header">
-                        <div class="command-name">stickyrole</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',stickyrole')"></i>
-                    </div>
-                    <div class="command-desc">Reapply a sticky role to a member upon rejoining.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,stickyrole [member] [role name]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Roles</span></div>
-                </div>
-
-                <!-- Voice Setup -->
-                <div class="command-card" data-category="voicemaster" data-name="vc setup">
-                    <div class="command-header">
-                        <div class="command-name">vc setup</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',vc setup')"></i>
-                    </div>
-                    <div class="command-desc">Initialize the VoiceMaster system with dynamic channels and category.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,vc setup</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Administrator</span></div>
-                </div>
-
-                <!-- Voice Reset -->
-                <div class="command-card" data-category="voicemaster" data-name="vc reset">
-                    <div class="command-header">
-                        <div class="command-name">vc reset</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',vc reset')"></i>
-                    </div>
-                    <div class="command-desc">Reset and clean up existing VoiceMaster configurations and channels.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,vc reset</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Administrator</span></div>
-                </div>
-
-                <!-- Voice Lock -->
-                <div class="command-card" data-category="voicemaster" data-name="vc lock">
-                    <div class="command-header">
-                        <div class="command-name">vc lock</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',vc lock')"></i>
-                    </div>
-                    <div class="command-desc">Lock your active VoiceMaster channel to deny connect permissions.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,vc lock</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">VC Owner</span></div>
-                </div>
-
-                <!-- Voice Unlock -->
-                <div class="command-card" data-category="voicemaster" data-name="vc unlock">
-                    <div class="command-header">
-                        <div class="command-name">vc unlock</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',vc unlock')"></i>
-                    </div>
-                    <div class="command-desc">Unlock your active VoiceMaster channel to allow public joins.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,vc unlock</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">VC Owner</span></div>
-                </div>
-
-                <!-- Voice Limit -->
-                <div class="command-card" data-category="voicemaster" data-name="vc limit">
-                    <div class="command-header">
-                        <div class="command-name">vc limit</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',vc limit')"></i>
-                    </div>
-                    <div class="command-desc">Set user capacity limits for your dynamic voice channel.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,vc limit [number]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">VC Owner</span></div>
-                </div>
-
-                <!-- Voice Permit -->
-                <div class="command-card" data-category="voicemaster" data-name="vc permit">
-                    <div class="command-header">
-                        <div class="command-name">vc permit</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',vc permit')"></i>
-                    </div>
-                    <div class="command-desc">Explicitly grant join permissions to a member or role.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,vc permit [member/role]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">VC Owner</span></div>
-                </div>
-
-                <!-- Voice Reject -->
-                <div class="command-card" data-category="voicemaster" data-name="vc reject">
-                    <div class="command-header">
-                        <div class="command-name">vc reject</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',vc reject')"></i>
-                    </div>
-                    <div class="command-desc">Deny permissions and disconnect target member from your channel.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,vc reject [member/role]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">VC Owner</span></div>
-                </div>
-
-                <!-- Voice Hide -->
-                <div class="command-card" data-category="voicemaster" data-name="vc hide">
-                    <div class="command-header">
-                        <div class="command-name">vc hide</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',vc hide')"></i>
-                    </div>
-                    <div class="command-desc">Hide your active voice channel from general server visibility.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,vc hide</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">VC Owner</span></div>
-                </div>
-
-                <!-- Voice Unhide -->
-                <div class="command-card" data-category="voicemaster" data-name="vc unhide">
-                    <div class="command-header">
-                        <div class="command-name">vc unhide</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',vc unhide')"></i>
-                    </div>
-                    <div class="command-desc">Make your hidden voice channel visible again.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,vc unhide</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">VC Owner</span></div>
-                </div>
-
-                <!-- Voice Claim -->
-                <div class="command-card" data-category="voicemaster" data-name="vc claim">
-                    <div class="command-header">
-                        <div class="command-name">vc claim</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',vc claim')"></i>
-                    </div>
-                    <div class="command-desc">Claim ownership of an abandoned voice channel when the owner leaves.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,vc claim</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">None</span></div>
-                </div>
-
-                <!-- Setup -->
-                <div class="command-card" data-category="security" data-name="setup">
-                    <div class="command-header">
-                        <div class="command-name">setup</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',setup')"></i>
-                    </div>
-                    <div class="command-desc">Automatically configures jail roles, jail channel, and admin log channels.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,setup</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Administrator</span></div>
-                </div>
-
-                <!-- Settings Jaillog -->
-                <div class="command-card" data-category="security" data-name="settings jaillog">
-                    <div class="command-header">
-                        <div class="command-name">settings jaillog</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',settings jaillog')"></i>
-                    </div>
-                    <div class="command-desc">Configure the logging channel for jail enforcement events.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,settings jaillog [channel]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Administrator</span></div>
-                </div>
-
-                <!-- Filter Add -->
-                <div class="command-card" data-category="security" data-name="filter add">
-                    <div class="command-header">
-                        <div class="command-name">filter add</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',filter add')"></i>
-                    </div>
-                    <div class="command-desc">Add a forbidden word to the persistent auto-moderation chat filter.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,filter add [word]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Server</span></div>
-                </div>
-
-                <!-- Filter Remove -->
-                <div class="command-card" data-category="security" data-name="filter remove">
-                    <div class="command-header">
-                        <div class="command-name">filter remove</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',filter remove')"></i>
-                    </div>
-                    <div class="command-desc">Remove a forbidden word from the auto-moderation list.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,filter remove [word]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Server</span></div>
-                </div>
-
-                <!-- Filter Spam -->
-                <div class="command-card" data-category="security" data-name="filter spam">
-                    <div class="command-header">
-                        <div class="command-name">filter spam</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',filter spam')"></i>
-                    </div>
-                    <div class="command-desc">Toggle anti-spam deletion enforcement for specific channels or all channels.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,filter spam [#channel/all] [on/off]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Server</span></div>
-                </div>
-
-                <!-- Honeypot -->
-                <div class="command-card" data-category="security" data-name="honeypot add">
-                    <div class="command-header">
-                        <div class="command-name">honeypot add</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',honeypot add')"></i>
-                    </div>
-                    <div class="command-desc">Set up a bait trap channel to catch and softban automated spammers.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,honeypot add [channel]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Administrator</span></div>
-                </div>
-
-                <!-- Lockdown -->
-                <div class="command-card" data-category="security" data-name="lockdown all">
-                    <div class="command-header">
-                        <div class="command-name">lockdown all</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',lockdown all')"></i>
-                    </div>
-                    <div class="command-desc">Locks down write permissions across all text channels in the server.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,lockdown all</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Administrator</span></div>
-                </div>
-
-                <!-- Antinuke Ban -->
-                <div class="command-card" data-category="security" data-name="antinuke ban">
-                    <div class="command-header">
-                        <div class="command-name">antinuke ban</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',antinuke ban')"></i>
-                    </div>
-                    <div class="command-desc">Enable or disable antinuke protection against mass bans with parameters.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,antinuke ban [on/off] --do [punishment]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Administrator</span></div>
-                </div>
-
-                <!-- Antiraid Massjoin -->
-                <div class="command-card" data-category="security" data-name="antiraid massjoin">
-                    <div class="command-header">
-                        <div class="command-name">antiraid massjoin</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',antiraid massjoin')"></i>
-                    </div>
-                    <div class="command-desc">Configure protection modules against mass join raids.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,antiraid massjoin [on/off] --do [punishment]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Administrator</span></div>
-                </div>
-
-                <!-- Autorole -->
-                <div class="command-card" data-category="security" data-name="autorole add">
-                    <div class="command-header">
-                        <div class="command-name">autorole add</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',autorole add')"></i>
-                    </div>
-                    <div class="command-desc">Automatically assign configured default roles to new members upon joining.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,autorole add [role]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Roles</span></div>
-                </div>
-
-                <!-- Welcome Add -->
-                <div class="command-card" data-category="security" data-name="welcome add">
-                    <div class="command-header">
-                        <div class="command-name">welcome add</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',welcome add')"></i>
-                    </div>
-                    <div class="command-desc">Configure custom join greeting messages and embed variables.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,welcome add [channel] [message]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Administrator</span></div>
-                </div>
-
-                <!-- Goodbye Add -->
-                <div class="command-card" data-category="security" data-name="goodbye add">
-                    <div class="command-header">
-                        <div class="command-name">goodbye add</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',goodbye add')"></i>
-                    </div>
-                    <div class="command-desc">Configure leave messages and embed layouts for departing users.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,goodbye add [channel] [message]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Administrator</span></div>
-                </div>
-
-                <!-- Giveaways Start -->
-                <div class="command-card" data-category="giveaways" data-name="giveaways start">
-                    <div class="command-header">
-                        <div class="command-name">giveaways start</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',giveaways start')"></i>
-                    </div>
-                    <div class="command-desc">Start a giveaway with automated reaction entries and timed selection.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,giveaways start [duration] [winners] [prize]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Server</span></div>
-                </div>
-
-                <!-- Giveaways End -->
-                <div class="command-card" data-category="giveaways" data-name="giveaways end">
-                    <div class="command-header">
-                        <div class="command-name">giveaways end</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',giveaways end')"></i>
-                    </div>
-                    <div class="command-desc">Force-end an active giveaway immediately using its message link.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,giveaways end [message_link]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Server</span></div>
-                </div>
-
-                <!-- Giveaways Reroll -->
-                <div class="command-card" data-category="giveaways" data-name="giveaways reroll">
-                    <div class="command-header">
-                        <div class="command-name">giveaways reroll</div>
-                        <i class="fa-regular fa-copy copy-icon" onclick="copyText(',giveaways reroll')"></i>
-                    </div>
-                    <div class="command-desc">Select a new random winner for an ended giveaway.</div>
-                    <div class="section-label">Usage</div>
-                    <div class="usage-box">,giveaways reroll [message_link]</div>
-                    <div class="section-label">Permissions</div>
-                    <div class="badge-list"><span class="badge permission">Manage Server</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- TAB 2: STATUS -->
-    <div id="tab-status" class="tab-content">
-        <div class="container animate-fade" style="animation-delay: 0.1s;">
-            <div class="header-search-row">
-                <div class="page-title">
-                    <i class="fa-solid fa-wifi"></i> System Status & Shards
-                </div>
-            </div>
-
-            <!-- Status Grid -->
-            <div class="status-grid">
-                <div class="status-card">
-                    <div class="status-card-header">
-                        <div>
-                            <div class="shard-title">Shard 1</div>
-                            <div class="shard-update-time">
-                                <i class="fa-solid fa-rotate-right"></i> just now
-                            </div>
+                    <!-- Help -->
+                    <div class="command-card" data-category="information" data-name="help">
+                        <div class="command-header">
+                            <div class="command-name">help</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',help')"></i>
                         </div>
-                        <div class="operational-badge">Operational</div>
+                        <div class="command-desc">Display bot website and support documentation link.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,help</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
                     </div>
-                    <div class="metrics-grid">
-                        <div class="metric-item">
-                            <div class="metric-label">Latency</div>
-                            <div class="metric-value">
-                                <i class="fa-solid fa-wave-square"></i> 18ms
+
+                    <!-- AFK -->
+                    <div class="command-card" data-category="information" data-name="afk a">
+                        <div class="command-header">
+                            <div class="command-name">afk (alias: a)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',afk')"></i>
+                        </div>
+                        <div class="command-desc">Set an AFK status that notifies members who ping you.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,afk [status]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Customize Avatar -->
+                    <div class="command-card" data-category="security" data-name="customize avatar reset">
+                        <div class="command-header">
+                            <div class="command-name">customize avatar / reset</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',customize avatar')"></i>
+                        </div>
+                        <div class="command-desc">Customize or reset the bot's display avatar for this server.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,customize avatar [image URL]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Server Owner</span></div>
+                    </div>
+
+                    <!-- Filter Add / Remove / Reset / Spam -->
+                    <div class="command-card" data-category="security" data-name="filter add remove reset spam">
+                        <div class="command-header">
+                            <div class="command-name">filter (add / remove / reset / spam)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',filter')"></i>
+                        </div>
+                        <div class="command-desc">Configure chat auto-moderation word filters and anti-spam deletion.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,filter add [word] | ,filter spam [channel/all] [on/off]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Server</span></div>
+                    </div>
+
+                    <!-- Whitelist Server -->
+                    <div class="command-card" data-category="security" data-name="whitelist">
+                        <div class="command-header">
+                            <div class="command-name">whitelist</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',whitelist')"></i>
+                        </div>
+                        <div class="command-desc">Whitelist a server ID to grant access to the bot.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,whitelist &lt;guild_id&gt;</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Bot Owner / Whitelisted User</span></div>
+                    </div>
+
+                    <!-- Unwhitelist Server -->
+                    <div class="command-card" data-category="security" data-name="unwhitelist">
+                        <div class="command-header">
+                            <div class="command-name">unwhitelist</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',unwhitelist')"></i>
+                        </div>
+                        <div class="command-desc">Remove a server ID from the bot whitelist.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,unwhitelist &lt;guild_id&gt;</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Bot Owner / Whitelisted User</span></div>
+                    </div>
+
+                    <!-- Whitelist User -->
+                    <div class="command-card" data-category="security" data-name="whitelistuser">
+                        <div class="command-header">
+                            <div class="command-name">whitelistuser</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',whitelistuser')"></i>
+                        </div>
+                        <div class="command-desc">Grant user-level whitelist access to manage whitelisted servers.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,whitelistuser &lt;user_id&gt;</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Bot Owner</span></div>
+                    </div>
+
+                    <!-- Unwhitelist User -->
+                    <div class="command-card" data-category="security" data-name="unwhitelistuser">
+                        <div class="command-header">
+                            <div class="command-name">unwhitelistuser</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',unwhitelistuser')"></i>
+                        </div>
+                        <div class="command-desc">Revoke user-level whitelist access.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,unwhitelistuser &lt;user_id&gt;</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Bot Owner</span></div>
+                    </div>
+
+                    <!-- Welcome -->
+                    <div class="command-card" data-category="security" data-name="welcome add remove view">
+                        <div class="command-header">
+                            <div class="command-name">welcome (add / remove / view)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',welcome')"></i>
+                        </div>
+                        <div class="command-desc">Configure greeting messages and customized embed parameters on join.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,welcome add #channel [message]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Administrator</span></div>
+                    </div>
+
+                    <!-- Goodbye -->
+                    <div class="command-card" data-category="security" data-name="goodbye add remove view">
+                        <div class="command-header">
+                            <div class="command-name">goodbye (add / remove / view)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',goodbye')"></i>
+                        </div>
+                        <div class="command-desc">Configure leave messages and embed parameters on member leave.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,goodbye add #channel [message]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Administrator</span></div>
+                    </div>
+
+                    <!-- MassDM -->
+                    <div class="command-card" data-category="moderation" data-name="massdm">
+                        <div class="command-header">
+                            <div class="command-name">massdm</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',massdm')"></i>
+                        </div>
+                        <div class="command-desc">Direct message all members across the server.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,massdm [message]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Administrator</span></div>
+                    </div>
+
+                    <!-- Honeypot -->
+                    <div class="command-card" data-category="security" data-name="honeypot add remove">
+                        <div class="command-header">
+                            <div class="command-name">honeypot (add / remove)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',honeypot')"></i>
+                        </div>
+                        <div class="command-desc">Set up a trap channel that automatically softbans compromised spam accounts.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,honeypot add #channel</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Administrator</span></div>
+                    </div>
+
+                    <!-- Setup -->
+                    <div class="command-card" data-category="security" data-name="setup">
+                        <div class="command-header">
+                            <div class="command-name">setup</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',setup')"></i>
+                        </div>
+                        <div class="command-desc">Automatically configures jail roles, jail channel, and restricted jail log channels.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,setup</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Administrator</span></div>
+                    </div>
+
+                    <!-- Logs / Settings Jaillog -->
+                    <div class="command-card" data-category="security" data-name="logs settings jaillog">
+                        <div class="command-header">
+                            <div class="command-name">logs / settings jaillog</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',logs')"></i>
+                        </div>
+                        <div class="command-desc">Set or reset the channel used for mod logs and jail logs.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,logs #channel | ,logs reset</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Administrator</span></div>
+                    </div>
+
+                    <!-- Lock -->
+                    <div class="command-card" data-category="moderation" data-name="lock">
+                        <div class="command-header">
+                            <div class="command-name">lock</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',lock')"></i>
+                        </div>
+                        <div class="command-desc">Lock write permissions for @everyone in the current or target channel.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,lock [channel]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Channels</span></div>
+                    </div>
+
+                    <!-- Unlock -->
+                    <div class="command-card" data-category="moderation" data-name="unlock">
+                        <div class="command-header">
+                            <div class="command-name">unlock</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',unlock')"></i>
+                        </div>
+                        <div class="command-desc">Unlock write permissions for @everyone in the current or target channel.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,unlock [channel]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Channels</span></div>
+                    </div>
+
+                    <!-- Lockdown All -->
+                    <div class="command-card" data-category="moderation" data-name="lockdown">
+                        <div class="command-header">
+                            <div class="command-name">lockdown all</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',lockdown all')"></i>
+                        </div>
+                        <div class="command-desc">Lock down write permissions across all text channels server-wide.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,lockdown all</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Administrator</span></div>
+                    </div>
+
+                    <!-- Hide -->
+                    <div class="command-card" data-category="moderation" data-name="hide">
+                        <div class="command-header">
+                            <div class="command-name">hide</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',hide')"></i>
+                        </div>
+                        <div class="command-desc">Hide channel view permissions from @everyone.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,hide [channel]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Channels</span></div>
+                    </div>
+
+                    <!-- Unhide -->
+                    <div class="command-card" data-category="moderation" data-name="unhide">
+                        <div class="command-header">
+                            <div class="command-name">unhide</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',unhide')"></i>
+                        </div>
+                        <div class="command-desc">Set channel view overwrites for @everyone back to neutral.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,unhide [channel]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Channels</span></div>
+                    </div>
+
+                    <!-- Say -->
+                    <div class="command-card" data-category="moderation" data-name="say">
+                        <div class="command-header">
+                            <div class="command-name">say</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',say')"></i>
+                        </div>
+                        <div class="command-desc">Echo a custom text message via the bot.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,say [message]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Messages</span></div>
+                    </div>
+
+                    <!-- Ghostping -->
+                    <div class="command-card" data-category="moderation" data-name="ghostping gp">
+                        <div class="command-header">
+                            <div class="command-name">ghostping (alias: gp)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',ghostping')"></i>
+                        </div>
+                        <div class="command-desc">Ghost ping a target member or everyone a specified number of times.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,gp [number] or ,gp [member] [number]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Messages</span></div>
+                    </div>
+
+                    <!-- Avatar -->
+                    <div class="command-card" data-category="information" data-name="avatar av">
+                        <div class="command-header">
+                            <div class="command-name">avatar (alias: av)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',avatar')"></i>
+                        </div>
+                        <div class="command-desc">View and download a user's avatar.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,av [member]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Server Avatar -->
+                    <div class="command-card" data-category="information" data-name="serveravatar sav sa">
+                        <div class="command-header">
+                            <div class="command-name">serveravatar (aliases: sav, sa)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',sav')"></i>
+                        </div>
+                        <div class="command-desc">View and download a user's server-specific profile avatar.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,sav [member]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Name History -->
+                    <div class="command-card" data-category="information" data-name="nh names namehistory">
+                        <div class="command-header">
+                            <div class="command-name">nh (aliases: names, namehistory)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',nh')"></i>
+                        </div>
+                        <div class="command-desc">View an interactive paginated log of a user's logged nickname and username changes.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,nh [member]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Clear Names -->
+                    <div class="command-card" data-category="information" data-name="clearnames resetnames">
+                        <div class="command-header">
+                            <div class="command-name">clearnames (alias: resetnames)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',clearnames')"></i>
+                        </div>
+                        <div class="command-desc">Wipe and reset your logged nickname and username history with approval buttons.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,clearnames</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Roles List -->
+                    <div class="command-card" data-category="information" data-name="roles">
+                        <div class="command-header">
+                            <div class="command-name">roles</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',roles')"></i>
+                        </div>
+                        <div class="command-desc">View a interactive paginated list of all server roles.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,roles</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Autorole -->
+                    <div class="command-card" data-category="security" data-name="autorole add remove reset">
+                        <div class="command-header">
+                            <div class="command-name">autorole (add / remove / reset)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',autorole')"></i>
+                        </div>
+                        <div class="command-desc">Configure roles that are automatically assigned to new joining members.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,autorole add [role]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Roles</span></div>
+                    </div>
+
+                    <!-- VoiceMaster Group -->
+                    <div class="command-card" data-category="voicemaster" data-name="voice vc vm setup reset lock unlock limit permit reject hide unhide claim transfer">
+                        <div class="command-header">
+                            <div class="command-name">voice / vc / vm (master command)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',vm setup')"></i>
+                        </div>
+                        <div class="command-desc">Complete dynamic VoiceMaster setup, lock/unlock, user capacity limit, permit, reject, hide, unhide, claim, and transfer commands.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,vm setup | ,vm lock | ,vm limit [num] | ,vm permit [user]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Administrator / VC Owner</span></div>
+                    </div>
+
+                    <!-- Timezone -->
+                    <div class="command-card" data-category="information" data-name="timezone tz set reset">
+                        <div class="command-header">
+                            <div class="command-name">timezone (aliases: tz / set / reset)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',tz set')"></i>
+                        </div>
+                        <div class="command-desc">View or set your personal timezone location (e.g., America/New_York).</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,tz set [location]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Crypto -->
+                    <div class="command-card" data-category="information" data-name="crypto">
+                        <div class="command-header">
+                            <div class="command-name">crypto</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',crypto')"></i>
+                        </div>
+                        <div class="command-desc">Check live market price of any cryptocurrency in USD via CoinGecko API.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,crypto [coin]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Urban Dictionary -->
+                    <div class="command-card" data-category="information" data-name="urban urbandictionary ud">
+                        <div class="command-header">
+                            <div class="command-name">urban (aliases: urbandictionary, ud)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',urban')"></i>
+                        </div>
+                        <div class="command-desc">Search slang definitions and upvotes on Urban Dictionary with interactive pages.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,urban [term]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Roblox -->
+                    <div class="command-card" data-category="information" data-name="roblox rblx">
+                        <div class="command-header">
+                            <div class="command-name">roblox (alias: rblx)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',roblox')"></i>
+                        </div>
+                        <div class="command-desc">Retrieve profile information, creation date, followers, and ban status for a Roblox user.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,roblox [username]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Snipe -->
+                    <div class="command-card" data-category="moderation" data-name="snipe s">
+                        <div class="command-header">
+                            <div class="command-name">snipe (alias: s)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',snipe')"></i>
+                        </div>
+                        <div class="command-desc">Retrieve recently deleted messages in the current text channel.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,snipe</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Reaction Snipe -->
+                    <div class="command-card" data-category="moderation" data-name="reactionsnipe rs">
+                        <div class="command-header">
+                            <div class="command-name">reactionsnipe (alias: rs)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',rs')"></i>
+                        </div>
+                        <div class="command-desc">Retrieve recently removed reactions in the channel.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,reactionsnipe</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Clear Snipes -->
+                    <div class="command-card" data-category="moderation" data-name="clearasnipes cs">
+                        <div class="command-header">
+                            <div class="command-name">clearasnipes (alias: cs)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',cs')"></i>
+                        </div>
+                        <div class="command-desc">Clear channel delete and reaction snipe cache.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,clearasnipes</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Messages</span></div>
+                    </div>
+
+                    <!-- Sticky Role -->
+                    <div class="command-card" data-category="moderation" data-name="stickyrole sr">
+                        <div class="command-header">
+                            <div class="command-name">stickyrole (alias: sr)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',sr')"></i>
+                        </div>
+                        <div class="command-desc">Configure sticky roles that automatically re-apply if a user rejoins.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,stickyrole [member] [role_name]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Roles</span></div>
+                    </div>
+
+                    <!-- Giveaways -->
+                    <div class="command-card" data-category="giveaways" data-name="giveaways gw giveaway start end reroll">
+                        <div class="command-header">
+                            <div class="command-name">giveaways (start / end / reroll)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',gw start')"></i>
+                        </div>
+                        <div class="command-desc">Start, force end, or reroll giveaway winners using timed durations and message links.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,gw start [duration] [winners] [prize] | ,gw end [link]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Server</span></div>
+                    </div>
+
+                    <!-- Rename / Nick -->
+                    <div class="command-card" data-category="moderation" data-name="rename nickname nick unrename unnick">
+                        <div class="command-header">
+                            <div class="command-name">rename (aliases: nick, nickname / unrename)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',rename')"></i>
+                        </div>
+                        <div class="command-desc">Change or reset a member's server display nickname.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,rename [member] [new_nick]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Nicknames</span></div>
+                    </div>
+
+                    <!-- Force Nickname -->
+                    <div class="command-card" data-category="moderation" data-name="forcenickname fn">
+                        <div class="command-header">
+                            <div class="command-name">forcenickname (alias: fn)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',fn')"></i>
+                        </div>
+                        <div class="command-desc">Force a member's server nickname.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,fn [member] [name]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Nicknames</span></div>
+                    </div>
+
+                    <!-- Role Group -->
+                    <div class="command-card" data-category="moderation" data-name="role r humans bots restore unrole">
+                        <div class="command-header">
+                            <div class="command-name">role (subcommands: humans, bots, restore, unrole)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',role')"></i>
+                        </div>
+                        <div class="command-desc">Toggle roles on a member, mass add roles to all humans/bots, or restore roles within a 1-hour grace window.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,role [member] [role] | ,role restore [member]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Roles</span></div>
+                    </div>
+
+                    <!-- Slash Vanity Group -->
+                    <div class="command-card" data-category="security" data-name="vanity set check role add remove">
+                        <div class="command-header">
+                            <div class="command-name">/vanity (set / check / role add / role remove)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText('/vanity set')"></i>
+                        </div>
+                        <div class="command-desc">Configure status substring detection to grant auto vanity award roles.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">/vanity set [substring] | /vanity role add [role]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Server / Manage Roles</span></div>
+                    </div>
+
+                    <!-- Slash Convert -->
+                    <div class="command-card" data-category="information" data-name="convert">
+                        <div class="command-header">
+                            <div class="command-name">/convert</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText('/convert')"></i>
+                        </div>
+                        <div class="command-desc">Auto convert attached media files (PNG/JPG/MP4/MOV) into animated GIF format.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">/convert [attachment]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Purge -->
+                    <div class="command-card" data-category="moderation" data-name="purge clear c">
+                        <div class="command-header">
+                            <div class="command-name">purge (aliases: clear, c)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',purge')"></i>
+                        </div>
+                        <div class="command-desc">Delete a specified amount of messages from a channel (optional user filter).</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,purge [user] [amount]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Messages</span></div>
+                    </div>
+
+                    <!-- Serverinfo -->
+                    <div class="command-card" data-category="information" data-name="serverinfo server si">
+                        <div class="command-header">
+                            <div class="command-name">serverinfo (aliases: server, si)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',serverinfo')"></i>
+                        </div>
+                        <div class="command-desc">Display server statistics, member/bot breakdown, boost level, design links, and shard ID.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,serverinfo</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Whois -->
+                    <div class="command-card" data-category="information" data-name="whois userinfo">
+                        <div class="command-header">
+                            <div class="command-name">whois (alias: userinfo)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',whois')"></i>
+                        </div>
+                        <div class="command-desc">Detailed profile lookup including account creation, join dates, mutual servers, and join position.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,whois [member]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">None</span></div>
+                    </div>
+
+                    <!-- Antinuke -->
+                    <div class="command-card" data-category="security" data-name="antinuke ban">
+                        <div class="command-header">
+                            <div class="command-name">antinuke ban</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',antinuke ban')"></i>
+                        </div>
+                        <div class="command-desc">Enable or disable antinuke protection against mass bans with custom punishment options.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,antinuke ban [on/off] --do [ban/kick]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Administrator</span></div>
+                    </div>
+
+                    <!-- Antiraid -->
+                    <div class="command-card" data-category="security" data-name="antiraid massjoin">
+                        <div class="command-header">
+                            <div class="command-name">antiraid massjoin</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',antiraid massjoin')"></i>
+                        </div>
+                        <div class="command-desc">Configure protection modules against mass join raids.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,antiraid massjoin [on/off] --do [kick/ban]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Administrator</span></div>
+                    </div>
+
+                    <!-- Nuke -->
+                    <div class="command-card" data-category="moderation" data-name="nuke">
+                        <div class="command-header">
+                            <div class="command-name">nuke</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',nuke')"></i>
+                        </div>
+                        <div class="command-desc">Clone and recreate the current text channel with interactive button confirmation.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,nuke</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Channels</span></div>
+                    </div>
+
+                    <!-- Ban -->
+                    <div class="command-card" data-category="moderation" data-name="ban b">
+                        <div class="command-header">
+                            <div class="command-name">ban (alias: b)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',ban')"></i>
+                        </div>
+                        <div class="command-desc">Ban a user from the server with direct DM notifications and optional message history deletion.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,ban [user] [delete_history] [reason]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Ban Members</span></div>
+                    </div>
+
+                    <!-- Unban -->
+                    <div class="command-card" data-category="moderation" data-name="unban">
+                        <div class="command-header">
+                            <div class="command-name">unban</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',unban')"></i>
+                        </div>
+                        <div class="command-desc">Unban a user from the server using ID/mention.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,unban [user_id] [reason]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Ban Members</span></div>
+                    </div>
+
+                    <!-- Hardban -->
+                    <div class="command-card" data-category="moderation" data-name="hardban hb">
+                        <div class="command-header">
+                            <div class="command-name">hardban (alias: hb)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',hb')"></i>
+                        </div>
+                        <div class="command-desc">Hardban a user wiping 7 full days (604,800s) of message history to combat alt evasion.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,hb [user_id] [reason]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Administrator</span></div>
+                    </div>
+
+                    <!-- Jail / Unjail -->
+                    <div class="command-card" data-category="moderation" data-name="jail unjail">
+                        <div class="command-header">
+                            <div class="command-name">jail / unjail</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',jail')"></i>
+                        </div>
+                        <div class="command-desc">Isolate a member into the restricted jail channel or remove the jailed role.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,jail [member] [reason] | ,unjail [member]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Manage Messages</span></div>
+                    </div>
+
+                    <!-- Kick -->
+                    <div class="command-card" data-category="moderation" data-name="kick">
+                        <div class="command-header">
+                            <div class="command-name">kick</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',kick')"></i>
+                        </div>
+                        <div class="command-desc">Kick a member from the server.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,kick [member] [reason]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Kick Members</span></div>
+                    </div>
+
+                    <!-- Warn -->
+                    <div class="command-card" data-category="moderation" data-name="warn w">
+                        <div class="command-header">
+                            <div class="command-name">warn (alias: w)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',warn')"></i>
+                        </div>
+                        <div class="command-desc">Warn a user and send them a private message with the rule infraction details.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,warn [member] [reason]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Kick Members</span></div>
+                    </div>
+
+                    <!-- Timeout / Untimeout -->
+                    <div class="command-card" data-category="moderation" data-name="timeout to untimeout uto">
+                        <div class="command-header">
+                            <div class="command-name">timeout (to) / untimeout (uto)</div>
+                            <i class="fa-regular fa-copy copy-icon" onclick="copyText(',timeout')"></i>
+                        </div>
+                        <div class="command-desc">Apply or remove Discord's native timeout mute on a member.</div>
+                        <div class="section-label">Usage</div>
+                        <div class="usage-box">,timeout [member] [duration] [reason]</div>
+                        <div class="section-label">Permissions</div>
+                        <div class="badge-list"><span class="badge permission">Moderate Members</span></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: STATUS -->
+        <div id="tab-status" class="tab-content">
+            <div class="container animate-fade" style="animation-delay: 0.1s;">
+                <div class="header-search-row">
+                    <div class="page-title">
+                        <i class="fa-solid fa-wifi"></i> System Status & Shards
+                    </div>
+                </div>
+
+                <div class="status-grid">
+                    <div class="status-card">
+                        <div class="status-card-header">
+                            <div>
+                                <div class="shard-title">Shard Cluster 19/31</div>
+                                <div class="shard-update-time">
+                                    <i class="fa-solid fa-rotate-right"></i> Live system active
+                                </div>
+                            </div>
+                            <div class="operational-badge">Operational</div>
+                        </div>
+                        <div class="metrics-grid">
+                            <div class="metric-item">
+                                <div class="metric-label">Latency</div>
+                                <div class="metric-value">
+                                    <i class="fa-solid fa-wave-square"></i> 18ms
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- TAB 3: FAQ -->
-    <div id="tab-faq" class="tab-content">
-        <div class="container animate-fade" style="animation-delay: 0.1s;">
-            <div class="page-title" style="margin-bottom: 32px; border-bottom: 1px solid #1f1f23; padding-bottom: 16px;">
-                <i class="fa-solid fa-list-ul"></i> Frequently Asked Questions
-            </div>
-
-            <div class="faq-list">
-                <!-- FAQ 1 -->
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Is Winter available for free and public use?
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        No. Winter is currently private and in closed beta testing.
-                    </div>
+        <!-- TAB 3: FAQ -->
+        <div id="tab-faq" class="tab-content">
+            <div class="container animate-fade" style="animation-delay: 0.1s;">
+                <div class="page-title" style="margin-bottom: 32px; border-bottom: 1px solid #181818; padding-bottom: 16px;">
+                    <i class="fa-solid fa-list-ul"></i> Frequently Asked Questions
                 </div>
 
-                <!-- FAQ 2 -->
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        How can I support Winter?
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        You can support us by joining our community or boosting our support server!
-                        <div class="crypto-list">
-                            <span class="crypto-badge">Community Support</span>
-                            <span class="crypto-badge">Server Boosts</span>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            Is Winter available for free public use?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            No. Winter is currently private and operating in a closed whitelisted beta. Only authorized servers and whitelisted users can invite or run the bot.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            How can I request whitelist access for my server?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            You can reach out directly in our official support community server or message <strong>@milk_mocha_17</strong> to request access.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            What prefix does Winter use?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            Winter defaults to comma (<code>,</code>) as its global prefix. It also fully supports modern Discord slash (<code>/</code>) commands for features like <code>/vanity</code> and <code>/convert</code>.
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- FAQ 3 -->
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        How much does Winter cost?
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        Winter is currently private and in beta testing.
-                    </div>
+        <!-- TAB 4: RULES & TOS -->
+        <div id="tab-rules" class="tab-content">
+            <div class="container animate-fade" style="animation-delay: 0.1s;">
+                <div class="page-title" style="margin-bottom: 32px; border-bottom: 1px solid #181818; padding-bottom: 16px;">
+                    <i class="fa-solid fa-scale-balanced"></i> Rules & Terms of Service
                 </div>
 
-                <!-- FAQ 4 -->
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Can I add Winter to multiple servers?
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        Winter is currently a private bot in beta testing. Access is strictly granted to whitelisted servers.
+                <div class="privacy-container">
+                    <div class="privacy-card">
+                        <h3><i class="fa-solid fa-shield-cat"></i> Discord Terms of Service Compliance</h3>
+                        <p>By using Winter, you explicitly agree to comply with Discord's official Terms of Service and Community Guidelines. Attempting to exploit commands, spam honeypot traps, or reverse-engineer bot infrastructure will lead to an immediate global ban across all whitelisted guilds.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- TAB 4: RULES & TOS -->
-    <div id="tab-rules" class="tab-content">
-        <div class="container animate-fade" style="animation-delay: 0.1s;">
-            <div class="page-title" style="margin-bottom: 32px; border-bottom: 1px solid #1f1f23; padding-bottom: 16px;">
-                <i class="fa-solid fa-scale-balanced"></i> Rules & Discord Terms of Service
-            </div>
+        <!-- TAB 5: YOUR INFO AND PRIVACY -->
+        <div id="tab-privacy" class="tab-content">
+            <div class="container animate-fade" style="animation-delay: 0.1s;">
+                <div class="page-title" style="margin-bottom: 32px; border-bottom: 1px solid #181818; padding-bottom: 16px;">
+                    <i class="fa-solid fa-user-shield"></i> Your Info and Privacy
+                </div>
 
-            <div class="rules-container">
-                <!-- Bot Abuse Warning -->
-                <div class="warning-box">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    <div>
-                        <strong style="color: #f87171; display: block; margin-bottom: 4px;">CRITICAL WARNING: Bot Abuse Prohibition</strong>
-                        Abusing Winter, attempting to exploit commands, running automated spam raids, overloading API endpoints, or bypassing rate limits will result in an <strong>immediate, permanent blacklist</strong> of your user ID, server, and associated accounts from using the bot.
+                <div class="privacy-container">
+
+                    <!-- How Data is Kept -->
+                    <div class="privacy-card">
+                        <h3><i class="fa-solid fa-database"></i> How Your Information is Kept & Stored</h3>
+                        <p>Winter values user privacy and minimizes data collection to only what is strictly necessary for utility features to function properly. All stored data is saved locally in structured JSON configuration files on our secure private server environment.</p>
+                        <ul>
+                            <li><strong>Name & Nickname History (<code>names_history.json</code>)</strong>: Stores recent display names and nicknames when user updates occur so members can inspect their own name logs via <code>,nh</code> or wipe them completely via <code>,clearnames</code>.</li>
+                            <li><strong>Server Moderation & Jail Settings (<code>settings.json</code> & <code>modlog_cases.json</code>)</strong>: Stores server configuration parameters, such as designated jail/mod log channels, custom prefixes, honeypot settings, and auto-incrementing case numbers.</li>
+                            <li><strong>Filter Settings (<code>filter_settings.json</code>)</strong>: Retains word blacklist keywords configured by server administrators for automated chat cleanup.</li>
+                            <li><strong>Giveaways & Welcome Settings (<code>giveaways.json</code>, <code>welcome_settings.json</code>)</strong>: Temporarily stores active giveaway parameters (host ID, end timestamp, prize) and greeting embed formats.</li>
+                            <li><strong>Timezones (<code>settings.json</code>)</strong>: Retains user-specified timezone strings set via <code>,tz set</code>.</li>
+                        </ul>
                     </div>
-                </div>
 
-                <!-- Discord TOS -->
-                <div class="rule-card">
-                    <h3><i class="fa-solid fa-shield-cat"></i> Discord Terms of Service Compliance</h3>
-                    <p>By inviting and using Winter, you explicitly agree to comply with all aspects of Discord's official Terms of Service (ToS) and Community Guidelines. Any violation of Discord's core policies will result in immediate service termination.</p>
-                    <ul>
-                        <li>Must comply with the minimum age requirements set by Discord.</li>
-                        <li>No malicious automation, self-botting, or unauthorized API scripting interacting with Winter.</li>
-                        <li>Zero tolerance for harassment, hate speech, malicious links, or illegal content distributed via bot features.</li>
-                        <li>Users must not attempt to reverse engineer, decompile, or extract proprietary source code from Winter.</li>
-                    </ul>
-                </div>
+                    <!-- Message Handling & Ephemeral Data -->
+                    <div class="privacy-card">
+                        <h3><i class="fa-solid fa-message"></i> Message Content & Ephemeral Data Handling</h3>
+                        <p>Winter processes live message content in real-time strictly for functional execution and does not store unflagged chat histories to disk:</p>
+                        <ul>
+                            <li><strong>Automated Chat Moderation</strong>: Messages are scanned transiently in memory to check against active server word filters or spam thresholds. Messages that trigger filters are deleted instantly.</li>
+                            <li><strong>Snipe Commands (<code>,snipe</code> / <code>,rs</code>)</strong>: Recently deleted messages and removed reactions are cached strictly in temporary memory (RAM) per channel for short windows before being overwritten. They are never written to permanent disk storage.</li>
+                            <li><strong>Honeypot Traps</strong>: Messages sent inside administrator-designated honeypot channels are captured to issue softbans and cleared automatically.</li>
+                        </ul>
+                    </div>
 
-                <div class="rule-card">
-                    <h3><i class="fa-solid fa-user-check"></i> Acceptable Use Policy</h3>
-                    <p>Winter is provided as a utility tool. Misuse of moderation tools (such as mass unwarranted bans, targeted harassment via logs, or channel purging sabotage) is strictly prohibited. Server administrators are fully responsible for how their staff teams utilize Winter's permissions.</p>
+                    <!-- Third Party & Disclosure -->
+                    <div class="privacy-card">
+                        <h3><i class="fa-solid fa-lock"></i> Third-Party Sharing & Rights</h3>
+                        <p>We do not sell, trade, or share user data or message records with any third-party advertising or analytics networks. Data is utilized exclusively to deliver bot commands within your Discord server.</p>
+                        <p style="margin-top: 12px;">Users may wipe their personal name logs at any time using <code>,clearnames</code> or request server data deletion upon bot removal from their server.</p>
+                    </div>
+
                 </div>
             </div>
         </div>
+
     </div>
 
+    <!-- JavaScript & Snow Particle Effect -->
     <script>
+        // Tab switching logic
         function switchTab(tabId, event) {
-            // Hide all tab contents
             const tabs = document.getElementsByClassName('tab-content');
             for (let tab of tabs) {
                 tab.classList.remove('active-tab');
             }
 
-            // Remove active status from nav links
             const navLinks = document.querySelectorAll('.nav-links a');
             for (let link of navLinks) {
                 link.classList.remove('active');
             }
 
-            // Show target tab
             document.getElementById('tab-' + tabId).classList.add('active-tab');
 
-            // Set active class on clicked nav link if event is passed
             if (event && event.currentTarget) {
                 event.currentTarget.classList.add('active');
             }
         }
 
+        // Command filtering search
         function filterCommands() {
             let input = document.getElementById('searchBar').value.toLowerCase();
             let cards = document.getElementsByClassName('command-card');
@@ -1523,6 +1447,7 @@
             }
         }
 
+        // Category filter
         function filterCategory(category) {
             let buttons = document.getElementsByClassName('cat-btn');
             for (let btn of buttons) {
@@ -1540,11 +1465,13 @@
             }
         }
 
+        // Copy text helper
         function copyText(text) {
             navigator.clipboard.writeText(text);
             alert("Copied command: " + text);
         }
 
+        // Accordion toggle
         function toggleFaq(button) {
             const item = button.parentElement;
             const isActive = item.classList.contains('active');
@@ -1558,6 +1485,54 @@
                 item.classList.add('active');
             }
         }
+
+        /* --- Falling Snow Background Effect --- */
+        const canvas = document.getElementById('snowCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const numFlakes = 65; // Very subtle particle count
+        const flakes = [];
+
+        for (let i = 0; i < numFlakes; i++) {
+            flakes.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                r: Math.random() * 1.8 + 0.5, // Small particle radius
+                d: Math.random() * 0.8 + 0.3, // Speed
+                o: Math.random() * 0.5 + 0.2  // Opacity
+            });
+        }
+
+        function drawSnow() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < numFlakes; i++) {
+                const f = flakes[i];
+                ctx.fillStyle = `rgba(255, 255, 255, ${f.o})`;
+                ctx.beginPath();
+                ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+                ctx.fill();
+
+                f.y += f.d;
+                f.x += Math.sin(f.y * 0.01) * 0.3;
+
+                if (f.y > height) {
+                    f.y = -5;
+                    f.x = Math.random() * width;
+                }
+            }
+            requestAnimationFrame(drawSnow);
+        }
+
+        drawSnow();
     </script>
 </body>
 </html>
